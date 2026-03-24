@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Radar App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            display: block;
+            margin: 0 auto;
+        }
+        .controls {
+            text-align: center;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button onclick="startStormSimulation()">Start Simulation</button>
+        <button onclick="stopStormSimulation()">Stop Simulation</button>
+    </div>
+    <canvas id="weatherCanvas" width="800" height="600"></canvas>
+    <script>
+        const canvas = document.getElementById('weatherCanvas');
+        const ctx = canvas.getContext('2d');
+        let animationId;
+        let stormActive = false;
+
+        function drawWeather() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            // Simulate weather rendering (placeholder code)
+            ctx.fillStyle = 'gray';
+            ctx.fillRect(Math.random() * canvas.width, Math.random() * canvas.height, 50, 50);
+        }
+
+        function startStormSimulation() {
+            if (!stormActive) {
+                stormActive = true;
+                animate();
+            }
+        }
+
+        function stopStormSimulation() {
+            stormActive = false;
+            cancelAnimationFrame(animationId);
+        }
+
+        function animate() {
+            if (stormActive) {
+                drawWeather();
+                animationId = requestAnimationFrame(animate);
+            }
+        }
+    </script>
+</body>
+</html>
