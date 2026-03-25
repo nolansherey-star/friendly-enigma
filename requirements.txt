@@ -1,0 +1,7 @@
+xradar
+pyart
+scipy
+numpy
+matplotlib
+pandas
+netCDF4
